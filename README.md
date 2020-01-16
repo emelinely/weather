@@ -14,7 +14,7 @@ json allows you to parse the response from openweather api
 ### external
 [simpleaudio](https://pypi.org/project/simpleaudio/) allows you to play sound files
 
-alsaaudio 
+alsaaudio allows you to change the volume of a raspberry pi
 
 ## setup
 ### openweather api
