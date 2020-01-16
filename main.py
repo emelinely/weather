@@ -23,8 +23,9 @@ cloudy_weather_conditions = ['broken clouds', 'overcast clouds', 'fog', 'mist',]
 snow_weather_conditions = ['light snow', 'Snow', 'Heavy snow', 'Sleet', 'Light shower sleet', 'Shower sleet', 'Light rain and snow', 'Rain and snow', 'Light shower snow', 'Shower snow', 'Heavy shower snow']
 
 other_weather_conditions = [ 'Smoke', 'Haze', 'sand/ dust whirls',  'sand', 'dust', 'volcanic ash', 'squalls', 'tornado'] 
-  
-complete_url = "http://api.openweathermap.org/data/2.5/weather?appid=a3e304c7b5f418e6e8463db911baabac&q=San Francisco"
+
+city = "San Francisco"
+complete_url = "http://api.openweathermap.org/data/2.5/weather?appid=a3e304c7b5f418e6e8463db911baabac&q=" + city  
 
 def play_weather_sound(weather_condition, temperature):
   """plays sound, given weather decription and temperature"""
@@ -82,7 +83,7 @@ while True:
   print(temperature)
   print(str(weather_condition))
   break
-  
+
 play_weather_sound(weather_condition, temperature)
 
   
