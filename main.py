@@ -30,7 +30,7 @@ m = alsaaudio.Mixer('PCM')
 def play_weather_sound(weather_condition, temperature):
     """plays sound, given weather decription and temperature"""
     m.setvolume(round(temperature*2.5))
-    print("set volume to " + m.getvolume())
+    print("set volume to {}".format( m.getvolume()))
     if weather_condition in possible_weather_conditions:
       if weather_condition in clear_weather_conditions:
         print('Playing CLEAR weather conditions')
