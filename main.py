@@ -30,6 +30,7 @@ complete_url = "http://api.openweathermap.org/data/2.5/weather?appid=a3e304c7b5f
 def play_weather_sound(weather_condition, temperature):
   """plays sound, given weather decription and temperature"""
     m.setvolume(round(temperature*2.5))
+    print("set volume to " + m.getvolume())
     if weather_condition in possible_weather_conditions:
       if weather_condition in clear_weather_conditions:
         print('Playing CLEAR weather conditions')
