@@ -1,5 +1,6 @@
 # weather
 code using weather API to replicate weather sounds
+
 ## description 
 a device that takes weather descriptions from the internet and plays the corresponding sounds by mapping the descriptions to the sound files in order to mimick the outdoors when you're indoors 
 
@@ -26,4 +27,4 @@ Using the service under Free tier, you can work with the following weather APIs:
 
 
 ### API Key
-add link to api key
+get your own api key from openweather [here](https://home.openweathermap.org/users/sign_up)`
