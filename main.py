@@ -26,9 +26,9 @@ other_weather_conditions = [ 'Smoke', 'Haze', 'sand/ dust whirls',  'sand', 'dus
 
 city = "San Francisco"
 complete_url = "http://api.openweathermap.org/data/2.5/weather?appid=a3e304c7b5f418e6e8463db911baabac&q=" + city  
-
+m = alsaaudio.Mixer('PCM')
 def play_weather_sound(weather_condition, temperature):
-  """plays sound, given weather decription and temperature"""
+    """plays sound, given weather decription and temperature"""
     m.setvolume(round(temperature*2.5))
     print("set volume to " + m.getvolume())
     if weather_condition in possible_weather_conditions:
