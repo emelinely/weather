@@ -3,7 +3,7 @@ import simpleaudio as sa
 import alsaaudio
 
 test_weather_condition = 'light rain'
-possible_weather_conditions = ['thunderstorm with light rain', 'thunderstorm with rain	', 'thunderstorm with heavy rain', 'light thunderstorm', 'thunderstorm', 'heavy thunderstorm',  "ragged thunderstorm", 'thunderstorm with light drizzle	', 'thunderstorm with drizzle	', 'thunderstorm with heavy drizzle', 'light intensity drizzle', 'drizzle', 'heavy intensity drizzle', 'light intensity drizzle rain', 'drizzle rain', 'heavy intensity drizzle rain', 'shower rain and drizzle', 'heavy shower rain and drizzle', 'shower drizzle', 'light rain', 'moderate rain', 'heavy intensity rain', 'very heavy rain', 'extreme rain', 'freezing rain', 'light intensity shower rain', 'shower rain', 'heavy intensity shower rain', 'ragged shower rain', 'light snow', 'Snow', 'Heavy snow', 'Sleet', 'Light shower sleet', 'Shower sleet', 'Light rain and snow', 'Rain and snow', 'Light shower snow', 'Shower snow', 'Heavy shower snow', 'mist', 'Smoke', 'Haze', 'sand/ dust whirls',  'fog', 'sand', 'dust', 'volcanic ash', 'squalls', 'tornado', 'clear sky', 'few clouds', 'scattered clouds', 'broken clouds', 'overcast clouds'] # all possible to check if description is accurate
+possible_weather_conditions = ['thunderstorm with light rain', 'thunderstorm with rain	', 'thunderstorm with heavy rain', 'light thunderstorm', 'thunderstorm', 'heavy thunderstorm',  "ragged thunderstorm", 'thunderstorm with light drizzle	', 'thunderstorm with drizzle	', 'thunderstorm with heavy drizzle', 'light intensity drizzle', 'drizzle', 'heavy intensity drizzle', 'light intensity drizzle rain', 'drizzle rain', 'heavy intensity drizzle rain', 'shower rain and drizzle', 'heavy shower rain and drizzle', 'shower drizzle', 'light rain', 'moderate rain', 'heavy intensity rain', 'very heavy rain', 'extreme rain', 'freezing rain', 'light intensity shower rain', 'shower rain', 'heavy intensity shower rain', 'ragged shower rain', 'light snow', 'Snow', 'Heavy snow', 'Sleet', 'Light shower sleet', 'Shower sleet', 'Light rain and snow', 'Rain and snow', 'Light shower snow', 'Shower snow', 'Heavy shower snow', 'mist', 'Smoke', 'haze', 'sand/ dust whirls',  'fog', 'sand', 'dust', 'volcanic ash', 'squalls', 'tornado', 'clear sky', 'few clouds', 'scattered clouds', 'broken clouds', 'overcast clouds'] # all possible to check if description is accurate
 
 clear_weather_conditions = ['clear sky', 'few clouds', 'scattered clouds'] 
 
@@ -22,7 +22,7 @@ cloudy_weather_conditions = ['broken clouds', 'overcast clouds', 'fog', 'mist',]
 
 snow_weather_conditions = ['light snow', 'Snow', 'Heavy snow', 'Sleet', 'Light shower sleet', 'Shower sleet', 'Light rain and snow', 'Rain and snow', 'Light shower snow', 'Shower snow', 'Heavy shower snow']
 
-other_weather_conditions = [ 'Smoke', 'Haze', 'sand/ dust whirls',  'sand', 'dust', 'volcanic ash', 'squalls', 'tornado'] 
+other_weather_conditions = [ 'Smoke', 'haze', 'sand/ dust whirls',  'sand', 'dust', 'volcanic ash', 'squalls', 'tornado'] 
 
 city = "San Francisco"
 complete_url = "http://api.openweathermap.org/data/2.5/weather?appid=a3e304c7b5f418e6e8463db911baabac&q=" + city  
@@ -71,7 +71,7 @@ def play_weather_sound(weather_condition, temperature):
     else:
       print('This is NOT a possible weather condition')
       
-    wave_obj = sa.WaveObject.from_wave_file("sounds/" + a)
+    wave_obj = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + a)
     play_obj = wave_obj.play()
     play_obj.wait_done()
 
