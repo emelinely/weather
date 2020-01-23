@@ -36,7 +36,6 @@ def temperature_to_volume(celsius):
 
 def play_weather_sound(weather_condition, celsius):
     """plays sound, given weather decription and temperature"""
-    temperature_to_volume(celsius)
     m.setvolume(round(volume))
     print("set volume to {}".format( m.getvolume()))
     if weather_condition in possible_weather_conditions:
@@ -90,6 +89,7 @@ while True:
   temperature = x['main']['temp']
   weather_condition = z[0]["description"] 
   convert_temperature(temperature)
+  temperature_to_volume(celsius)
   print(celsius)
   print(str(weather_condition))
   play_weather_sound(weather_condition, temperature)
