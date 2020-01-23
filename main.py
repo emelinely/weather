@@ -95,6 +95,6 @@ while True:
   print(type(celsius))
   print(str(weather_condition))
   play_weather_sound(weather_condition, temperature)
-  break
+
 
   
