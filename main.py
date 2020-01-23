@@ -29,7 +29,7 @@ complete_url = "http://api.openweathermap.org/data/2.5/weather?appid=a3e304c7b5f
 m = alsaaudio.Mixer('PCM')
 
 def convert_temperature(temperature):
-  celsius = round(temperature - 270)
+  celsius = temperature - 270
 
 def temperature_to_volume(celsius):
   volume = round(35 + celsius*1.625)
