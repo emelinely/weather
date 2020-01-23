@@ -30,9 +30,11 @@ m = alsaaudio.Mixer('PCM')
 
 def convert_temperature(temperature):
   celsius = temperature - 270
+  return celsius
 
 def temperature_to_volume(celsius):
   volume = round(35 + celsius*1.625)
+  return volume
 
 def play_weather_sound(weather_condition, celsius):
     """plays sound, given weather decription and temperature"""
