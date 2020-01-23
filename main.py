@@ -33,7 +33,7 @@ def convert_temperature(temperature):
   return celsius
 
 def temperature_to_volume(celsius):
-  volume = round(35 + celsius*1.625)
+  volume = round(50 + celsius*1.25)
   return volume
 
 def play_weather_sound(weather_condition, celsius):
