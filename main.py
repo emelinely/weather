@@ -88,8 +88,8 @@ while True:
   z = x["weather"] 
   temperature = x['main']['temp']
   weather_condition = z[0]["description"] 
-  convert_temperature(temperature)
-  temperature_to_volume(celsius)
+  celsius = convert_temperature(temperature)
+  volume = temperature_to_volume(celsius)
   print(celsius)
   print(str(weather_condition))
   play_weather_sound(weather_condition, temperature)
