@@ -1,5 +1,6 @@
 import requests, json 
 import simpleaudio as sa
+import time
 import alsaaudio
 
 test_weather_condition = 'light rain'
@@ -84,8 +85,12 @@ def play_weather_sound(weather_condition, celsius):
     play_obj = wave_obj.play()
     play_obj.wait_done()
 
-while True:  
-  response = requests.get(complete_url) 
+while True: 
+  try:
+    response = requests.get(complete_url) 
+  except:
+    time.sleep(10)
+    continue
   x = response.json() 
   z = x["weather"] 
   temperature = x['main']['temp']
