@@ -97,6 +97,10 @@ while True:
   weather_condition = z[0]["description"] 
   celsius = convert_temperature(temperature)
   volume = temperature_to_volume(celsius)
+  with open('weather.log', 'w') as writer:
+    writer.write('{}'.format(weather_condtion))
+    writer.write('temperature is {}'.format(celsius))
+    writer.write('playing at volume {}'.format(volume))
   print("temperature is {}".format(celsius))
   print(str(weather_condition))
   play_weather_sound(weather_condition, temperature)
