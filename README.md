@@ -28,3 +28,11 @@ Using the service under Free tier, you can work with the following weather APIs:
 
 ### API Key
 get your own api key from openweather [here](https://home.openweathermap.org/users/sign_up)`
+
+### Raspberry pi
+#### Running at boot
+You can edit the rc.local file in order to run at boot:
+
+Use sudo nano /etc/rc.local to edit the file, then add sudo python3 /home/pi/weather/main.py just before the exit 0.
+
+This allows the program to run at boot. However, the program does not run forever when using this method.
