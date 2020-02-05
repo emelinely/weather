@@ -35,4 +35,8 @@ You can edit the rc.local file in order to run at boot:
 
 Use sudo nano /etc/rc.local to edit the file, then add sudo python3 /home/pi/weather/main.py just before the exit 0.
 
-This allows the program to run at boot. However, the program does not run forever when using this method.
+This allows the program to run at boot. However, the program might not run forever when using this method. 
+
+Laatest version seems to run forever, but more testing is needed.
+##### To stop running process in rc.local at boot
+press Alt + PrintScn + k
