@@ -17,6 +17,13 @@ json allows you to parse the response from openweather api
 
 alsaaudio allows you to change the volume of a raspberry pi
 
+scikits.audiolab:
+```
+sudo apt-get install libasound2-dev
+sudo apt-get install libsndfile-dev
+sudo pip3 install scikits.audiolab
+```
+
 ## setup
 ### openweather api
 
@@ -37,6 +44,6 @@ Use sudo nano /etc/rc.local to edit the file, then add sudo python3 /home/pi/wea
 
 This allows the program to run at boot. However, the program might not run forever when using this method. 
 
-Laatest version seems to run forever, but more testing is needed.
+Latest version seems to run forever, but more testing is needed.
 ##### To stop running process in rc.local at boot
 press Alt + PrintScn + k
