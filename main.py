@@ -37,6 +37,21 @@ def temperature_to_volume(celsius):
   volume = round(50 + celsius*1.25)
   return volume
 
+def wind_speed_to_sound(wind_speed):
+  wind_speed_km = round(wind_speed*3.6)
+  if wind_speed_km <= 19:
+    b = 0.1
+  if wind_speed_km > 19 and <= 38:
+    b = 0.2
+  if wind_speed_km >38 and <=61:
+    b = 0.3
+  if wind_speed_km >61 and <=88:
+    b = 0.4
+  if wind_speed_km >88 and <=117:
+    b = 0.5
+  if wind_speed_km >117:
+    b = 0.6
+
 def play_weather_sound(weather_condition, celsius):
     """plays sound, given weather decription and temperature"""
     m.setvolume(round(volume))
@@ -95,6 +110,7 @@ while True:
   z = x["weather"] 
   temperature = x['main']['temp']
   weather_condition = z[0]["description"] 
+  wind_speed = x["wind"]["speed"]
   celsius = convert_temperature(temperature)
   volume = temperature_to_volume(celsius)
   with open('weather.log', 'w') as writer:
