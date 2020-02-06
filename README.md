@@ -4,7 +4,15 @@ code using weather API to replicate weather sounds
 ## description 
 a device that takes weather descriptions from the internet and plays the corresponding sounds by mapping the descriptions to the sound files in order to mimick the outdoors when you're indoors 
 
+### temperature
+takes the temperature from openweather api and converts it into celsius
 
+changes the volume of the audio output according to the temperature (warmer is louder and colder is softer)
+
+the current upper temperature limit is 40 degrees celsius
+
+### log
+logs the current weather description, temperature and volume in a file called weather.log
 
 ## requirements
 ### built-in
@@ -17,7 +25,7 @@ json allows you to parse the response from openweather api
 
 alsaaudio allows you to change the volume of a raspberry pi
 
-scikits.audiolab:
+scikits.audiolab has not been working, but to install use the following code:
 ```
 sudo apt-get install libasound2-dev
 sudo apt-get install libsndfile-dev
@@ -34,7 +42,7 @@ Using the service under Free tier, you can work with the following weather APIs:
 
 
 ### API Key
-get your own api key from openweather [here](https://home.openweathermap.org/users/sign_up)`
+get your own api key from openweather [here](https://home.openweathermap.org/users/sign_up)
 
 ### Raspberry pi
 #### Running at boot
@@ -45,5 +53,9 @@ Use sudo nano /etc/rc.local to edit the file, then add sudo python3 /home/pi/wea
 This allows the program to run at boot. However, the program might not run forever when using this method. 
 
 Latest version seems to run forever, but more testing is needed.
+
+Because at boot the raspberry pi is not initially connected to the internet, the program will first make sure that it receives data from openweather api before trying to run the code.
+
 ##### To stop running process in rc.local at boot
 press Alt + PrintScn + k
+
