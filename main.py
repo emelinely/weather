@@ -41,15 +41,15 @@ def wind_speed_to_sound(wind_speed):
   wind_speed_km = round(wind_speed*3.6)
   if wind_speed_km <= 19:
     b = 0.1
-  if wind_speed_km > 19 and <= 38:
+  elif wind_speed_km > 19 and wind_speed_km <= 38:
     b = 0.2
-  if wind_speed_km >38 and <=61:
+  elif wind_speed_km >38 and wind_speed_km <=61:
     b = 0.3
-  if wind_speed_km >61 and <=88:
+  elif wind_speed_km >61 and wind_speed_km <=88:
     b = 0.4
-  if wind_speed_km >88 and <=117:
+  elif wind_speed_km >88 and wind_speed_km <=117:
     b = 0.5
-  if wind_speed_km >117:
+  elif wind_speed_km >117:
     b = 0.6
 
 def play_weather_sound(weather_condition, celsius):
