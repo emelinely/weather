@@ -37,20 +37,27 @@ def temperature_to_volume(celsius):
   volume = round(50 + celsius*1.25)
   return volume
 
-def wind_speed_to_sound(wind_speed):
+def wind_speed_to_km(wind_speed):
   wind_speed_km = round(wind_speed*3.6)
+  return wind_speed_km
+
+def wind_to_sound(wind_speed_km, a):
   if wind_speed_km <= 19:
-    b = 0.1
+    play(a)
   elif wind_speed_km > 19 and wind_speed_km <= 38:
-    b = 0.2
+    play(a)
   elif wind_speed_km >38 and wind_speed_km <=61:
-    b = 0.3
+    b = "wind1.wav"
+    play2(a, b)
   elif wind_speed_km >61 and wind_speed_km <=88:
-    b = 0.4
+    b = "wind2.wav"
+    play2(a, b)
   elif wind_speed_km >88 and wind_speed_km <=117:
-    b = 0.5
+    b = "wind3.wav"
+    play2(a, b)
   elif wind_speed_km >117:
-    b = 0.6
+    b = "wind4.wav"
+    play2(a, b)
 
 def play_weather_sound(weather_condition, celsius):
     """plays sound, given weather decription and temperature"""
@@ -95,10 +102,21 @@ def play_weather_sound(weather_condition, celsius):
         a = "other.wav"
     else:
       print('This is NOT a possible weather condition')
-      
+    return a
+
+def play(a):
     wave_obj = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + a)
     play_obj = wave_obj.play()
     play_obj.wait_done()
+
+def play2(a,b):
+    wav_obja = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + a)
+    wav_objb = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + b)
+    play_obja = wav_obja.play()
+    play_objb = wav_objb.play()
+    play_obja.wait_done()
+    play_objb.wait_done()
+
 
 while True: 
   try:
@@ -112,14 +130,18 @@ while True:
   weather_condition = z[0]["description"] 
   wind_speed = x["wind"]["speed"]
   celsius = convert_temperature(temperature)
+  celsius = convert_temperature(temperature)
   volume = temperature_to_volume(celsius)
+  wind_speed_km = wind_speed_to_km(wind_speed)
   with open('weather.log', 'w') as writer:
     writer.write('{}/n'.format(weather_condition))
     writer.write('temperature is {} degrees celsius/n'.format(celsius))
     writer.write('playing at volume {}/n'.format(volume))
   print("temperature is {}".format(celsius))
   print(str(weather_condition))
-  play_weather_sound(weather_condition, temperature)
-
+  print("wind speed in km/h is".format(str(wind_speed_km)))
+  a = play_weather_sound(weather_condition, temperature)
+  wind_to_sound(wind_speed_km, a)
+  print(a)
 
   
