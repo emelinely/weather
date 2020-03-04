@@ -20,17 +20,12 @@ requests allows you to make api calls to openweather api
 
 json allows you to parse the response from openweather api
 
+time allows you to 'sleep', or wait for a specified amount of time
+
 ### external
 [simpleaudio](https://pypi.org/project/simpleaudio/) allows you to play sound files
 
 alsaaudio allows you to change the volume of a raspberry pi
-
-scikits.audiolab has not been working, but to install use the following code:
-```
-sudo apt-get install libasound2-dev
-sudo apt-get install libsndfile-dev
-sudo pip3 install scikits.audiolab
-```
 
 ## setup
 ### openweather api
