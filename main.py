@@ -30,18 +30,26 @@ complete_url = "http://api.openweathermap.org/data/2.5/weather?appid=a3e304c7b5f
 m = alsaaudio.Mixer('PCM')
 
 def convert_temperature(temperature):
+  """converts temperature from kelvin into celsius"""
   celsius = temperature - 270
   return celsius
 
-def temperature_to_volume(celsius):
-  volume = round(50 + celsius*1.25)
-  return volume
+def temperature_to_volume(celsius, a):
+  """sets volume, if weather is clear, volume is lower"""
+  if a == "clear.wav":
+    volume = round(50 + celsius)
+  else:
+    volume = round(50 + celsius*1.25)
+  m.setvolume(round(volume))
+  print("set volume to {}".format( m.getvolume()))
 
 def wind_speed_to_km(wind_speed):
+  """converts wind speed into km"""
   wind_speed_km = round(wind_speed*3.6)
   return wind_speed_km
 
-def wind_to_sound(wind_speed_km, a):
+def play_sounds(wind_speed_km, a):
+  """plays weather sound, and wind if wind speed is high enough"""
   if wind_speed_km <= 19:
     play(a)
   elif wind_speed_km > 19 and wind_speed_km <= 38:
@@ -59,10 +67,8 @@ def wind_to_sound(wind_speed_km, a):
     b = "wind4.wav"
     play2(a, b)
 
-def play_weather_sound(weather_condition, celsius):
-    """plays sound, given weather decription and temperature"""
-    m.setvolume(round(volume))
-    print("set volume to {}".format( m.getvolume()))
+def find_weather_sound(weather_condition):
+    """finds sound to play, given weather decription"""
     if weather_condition in possible_weather_conditions:
       if weather_condition in clear_weather_conditions:
         print('Playing CLEAR weather conditions')
@@ -105,17 +111,19 @@ def play_weather_sound(weather_condition, celsius):
     return a
 
 def play(a):
-    wave_obj = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + a)
-    play_obj = wave_obj.play()
-    play_obj.wait_done()
+  """play a single wav file"""
+  wave_obj = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + a)
+  play_obj = wave_obj.play()
+  play_obj.wait_done()
 
 def play2(a,b):
-    wav_obja = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + a)
-    wav_objb = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + b)
-    play_obja = wav_obja.play()
-    play_objb = wav_objb.play()
-    play_obja.wait_done()
-    play_objb.wait_done()
+  """play 2 wav files"""
+  wav_obja = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + a)
+  wav_objb = sa.WaveObject.from_wave_file("/home/pi/weather/sounds/" + b)
+  play_obja = wav_obja.play()
+  play_objb = wav_objb.play()
+  play_obja.wait_done()
+  play_objb.wait_done()
 
 
 while True: 
@@ -129,9 +137,9 @@ while True:
   temperature = x['main']['temp']
   weather_condition = z[0]["description"] 
   wind_speed = x["wind"]["speed"]
+  a = find_weather_sound(weather_condition)
   celsius = convert_temperature(temperature)
-  celsius = convert_temperature(temperature)
-  volume = temperature_to_volume(celsius)
+  temperature_to_volume(celsius, a)
   wind_speed_km = wind_speed_to_km(wind_speed)
   with open('weather.log', 'w') as writer:
     writer.write('{}/n'.format(weather_condition))
@@ -141,8 +149,7 @@ while True:
   print("temperature is {}".format(celsius))
   print(str(weather_condition))
   print("wind speed in km/h is {}".format(str(wind_speed_km)))
-  a = play_weather_sound(weather_condition, temperature)
-  wind_to_sound(wind_speed_km, a)
+  play_sounds(wind_speed_km, a)
   print(a)
 
   
