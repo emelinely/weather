@@ -37,12 +37,13 @@ def convert_temperature(temperature):
 def temperature_to_volume(celsius, a):
   """sets volume, if weather is clear, volume is lower"""
   if a == "clear.wav":
-    volume = round(50 + celsius)
-  else:
     volume = round(50 + celsius*1.25)
+  else:
+    volume = round(50 + celsius*1.50)
   m.setvolume(round(volume))
   print("set volume to {}".format( m.getvolume()))
-
+  return volume
+  
 def wind_speed_to_km(wind_speed):
   """converts wind speed into km"""
   wind_speed_km = round(wind_speed*3.6)
@@ -139,7 +140,7 @@ while True:
   wind_speed = x["wind"]["speed"]
   a = find_weather_sound(weather_condition)
   celsius = convert_temperature(temperature)
-  temperature_to_volume(celsius, a)
+  volume = temperature_to_volume(celsius, a)
   wind_speed_km = wind_speed_to_km(wind_speed)
   with open('weather.log', 'w') as writer:
     writer.write('{}/n'.format(weather_condition))
