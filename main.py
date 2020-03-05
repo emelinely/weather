@@ -40,6 +40,8 @@ def temperature_to_volume(celsius, a):
     volume = round(50 + celsius*1.25)
   else:
     volume = round(50 + celsius*1.50)
+  if volume > 100:
+    volume = 100
   m.setvolume(round(volume))
   print("set volume to {}".format( m.getvolume()))
   return volume
