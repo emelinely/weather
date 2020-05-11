@@ -74,40 +74,40 @@ def find_weather_sound(weather_condition):
     """finds sound to play, given weather decription"""
     if weather_condition in possible_weather_conditions:
       if weather_condition in clear_weather_conditions:
-        print('Playing CLEAR weather conditions')
+        print('Playing CLEAR weather conditions:')
         a = "clear.wav"
       elif weather_condition in heavy_rain_weather_conditions:
-        print('Playing HEAVY RAIN weather condition')
+        print('Playing HEAVY RAIN weather conditions:')
         a = "heavy_rain.wav"
       elif weather_condition in rain_weather_conditions:
-        print('Playing RAIN weather condition')
+        print('Playing RAIN weather conditions:')
         a = "rain.wav"
       elif weather_condition in light_rain_weather_conditions:
-        print('Playing LIGHT RAIN weather condition')
+        print('Playing LIGHT RAIN weather conditions:')
         a = "light_rain.wav"
       elif weather_condition in light_drizzle_weather_conditions:
-        print('Playing LIGHT DRIZZLE weather condition')
+        print('Playing LIGHT DRIZZLE weather conditions:')
         a = "light_drizzle.wav"
       elif weather_condition in drizzle_weather_conditions:
-        print('Playing DRIZZLE weather condition')
+        print('Playing DRIZZLE weather conditions:')
         a = "drizzle.wav"
       elif weather_condition in heavy_drizzle_weather_conditions:
-        print('Playing HEAVY DRIZZLE weather condition')
+        print('Playing HEAVY DRIZZLE weather conditions:')
         a = "heavy_drizzle.wav"
       elif weather_condition in thunderstorm_weather_conditions:
-        print('Playing THUNDERSTORM weather condition')
+        print('Playing THUNDERSTORM weather conditions:')
         a = "thunderstorm.wav"
       elif weather_condition in thunderstorm_rain_weather_conditions:
-        print('Playing THUNDERSTORM RAIN weather condition')
+        print('Playing THUNDERSTORM RAIN weather conditions:')
         a = "thunderstorm_with_rain.wav"
       elif weather_condition in cloudy_weather_conditions:
-        print('Playing CLOUDY weather condition')
+        print('Playing CLOUDY weather conditions:')
         a = "cloudy.wav"
       elif weather_condition in snow_weather_conditions:
-        print('Playing SNOW weather condition')
+        print('Playing SNOW weather conditions:')
         a = "snow.wav"
       elif weather_condition in other_weather_conditions:
-        print('Playing OTHER weather condition')
+        print('Playing OTHER weather conditions:')
         a = "other.wav"
     else:
       print('This is NOT a possible weather condition')
@@ -149,9 +149,9 @@ while True:
     writer.write('temperature is {} degrees celsius\n'.format(celsius))
     writer.write('playing at volume {}\n'.format(volume))
     writer.write('wind speed is {}'.format(wind_speed_km))
-  print("temperature is {}".format(celsius))
+  print("temperature is {:.2f}°C".format(celsius))
   print(str(weather_condition))
-  print("wind speed in km/h is {}".format(str(wind_speed_km)))
+  print("wind speed is {} km/h".format(str(wind_speed_km)))
   play_sounds(wind_speed_km, a)
   print(a)
 
